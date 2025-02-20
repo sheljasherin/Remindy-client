@@ -1,0 +1,96 @@
+body {
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .main-container {
+    display: flex;
+    height: calc(100vh - 40px);
+    padding: 20px;
+    justify-content: space-around;
+    align-items: flex-start;
+  }
+  
+  .details-card {
+    background-color: #34495E;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 50%;
+    height: 70%;
+    overflow-y: auto;
+    color: #ECF0F1;
+  }
+  
+  .details-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+  
+  .details-info {
+    background-color: #2C3E50;
+    color: #ECF0F1;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .details-info p {
+    margin: 5px 0;
+  }
+  
+  .upcoming-events {
+    background-color: #16A085;
+    padding: 20px;
+    color: white;
+    margin-left: 30px;
+    width: 30%;
+    height: 70%;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .upcoming-events h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+  
+  .upcoming-events .event-info {
+    background-color: #1ABC9C;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .upcoming-events .event-info p {
+    margin: 5px 0;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  li {
+    margin: 5px 0;
+    font-size: 1rem;
+    color: #ECF0F1;
+  }
+  
+  @media (max-width: 768px) {
+    .main-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .details-card, .upcoming-events {
+      width: 90%;
+      margin-bottom: 20px;
+    }
+  }
+  
