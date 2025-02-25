@@ -8,7 +8,7 @@ const Register = () => {
     name: "",
     email: "",
     password: "",
-    father:"",
+    father: "",
     birthday: "",
     anniversary: "",
   });
@@ -23,16 +23,12 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = "http://localhost:5001/api/PersonRoute";
+      const url = "http://localhost:5001/api/auth/register"; // Updated API route
       await axios.post(url, data);
-      navigate("/");
+      navigate("/login");
     } catch (error) {
-      if (error.response?.status === 409) {
-        setError("User already exists. Redirecting to login...");
-        setTimeout(() => navigate("/login"), 2000);
-      } else {
-        setError(error.response?.data?.message || "Something went wrong.");
-      }
+      const errorMessage = error.response?.data?.message || "Something went wrong.";
+      setError(errorMessage);
     }
   };
 
@@ -53,13 +49,11 @@ const Register = () => {
             <input type="text" placeholder="Full Name" name="name" onChange={handleChange} value={data.name} required className="register-input" />
             <input type="email" placeholder="Email" name="email" onChange={handleChange} value={data.email} required className="register-input" />
             <input type="password" placeholder="Password" name="password" onChange={handleChange} value={data.password} required className="register-input" />
-            <input type="text" placeholder="Father name" name="father" onChange={handleChange} value={data.father} required className="register-input" />
+            <input type="text" placeholder="Father's Name" name="father" onChange={handleChange} value={data.father} required className="register-input" />
             <input type="date" name="birthday" onChange={handleChange} value={data.birthday} required className="register-input" />
             <input type="date" name="anniversary" onChange={handleChange} value={data.anniversary} required className="register-input" />
             {error && <div className="register-error">{error}</div>}
-            <button type="submit" className="register-green-btn">
-              Sign Up
-            </button>
+            <button type="submit" className="register-green-btn">Sign Up</button>
           </form>
         </div>
       </div>

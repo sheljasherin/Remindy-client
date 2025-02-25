@@ -5,11 +5,12 @@ import "./Login.css";
 
 const Login = () => {
   const [data, setData] = useState({ email: "", password: "", secretKey: "" });
-  const [userType, setUserType] = useState("user"); 
+  const [userType, setUserType] = useState("user");
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const navigate = useNavigate();
 
-  const handleChange = ({ currentTarget: input }) => {
+  const handleChange = ({ target: input }) => {
     setData({ ...data, [input.name]: input.value });
   };
 
@@ -20,20 +21,28 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = "http://localhost:5001/api/auth";
+      const url = "http://localhost:5001/api/auth/login";
       const response = await axios.post(url, { ...data, userType });
 
-      localStorage.setItem("token", response.data.token);
+      if (response.data.userExists) {
+        localStorage.setItem("token", response.data.token);
+        setSuccess("Login successful! Redirecting...");
+        setError("");
 
-      if (userType === "admin" && response.data.isAdmin) {
-        navigate("/admin-dashboard");
+        setTimeout(() => {
+          if (userType === "admin") {
+            navigate("/admin-dashboard");
+          } else {
+            navigate("/");
+          }
+        }, 1500);
       } else {
-        navigate("/");
+        setError("User does not exist. Please register first.");
+        setSuccess("");
       }
     } catch (error) {
-      if (error.response?.status >= 400) {
-        setError(error.response.data.message);
-      }
+      setError(error.response?.data?.message || "Something went wrong.");
+      setSuccess("");
     }
   };
 
@@ -43,14 +52,26 @@ const Login = () => {
         <div className="left">
           <form className="form_container" onSubmit={handleSubmit}>
             <h1>Login to Your Account</h1>
-            
-            <div>
+
+            <div className="user_type_selection">
               <label>
-                <input type="radio" name="userType" value="user" checked={userType === "user"} onChange={handleUserTypeChange} />
+                <input
+                  type="radio"
+                  name="userType"
+                  value="user"
+                  checked={userType === "user"}
+                  onChange={handleUserTypeChange}
+                />
                 User
               </label>
               <label>
-                <input type="radio" name="userType" value="admin" checked={userType === "admin"} onChange={handleUserTypeChange} />
+                <input
+                  type="radio"
+                  name="userType"
+                  value="admin"
+                  checked={userType === "admin"}
+                  onChange={handleUserTypeChange}
+                />
                 Admin
               </label>
             </div>
@@ -63,6 +84,8 @@ const Login = () => {
             )}
 
             {error && <div className="error_msg">{error}</div>}
+            {success && <div className="success_msg">{success}</div>}
+
             <button type="submit" className="green_btn">Sign In</button>
           </form>
         </div>
