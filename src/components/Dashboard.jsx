@@ -15,6 +15,20 @@ const Dashboard = () => {
         user.fatherName?.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
+    const getUpcomingEvents = () => {
+        const today = new Date();
+        
+        return verifiedUsers.filter(user => {
+            const birthday = user.birthday ? new Date(user.birthday) : null;
+            const anniversary = user.anniversaryDate ? new Date(user.anniversaryDate) : null;
+
+            return (
+                (birthday && birthday > today) || 
+                (anniversary && anniversary > today)
+            );
+        });
+    };
+
     return (
         <div className="main-container">
             <input
@@ -32,10 +46,10 @@ const Dashboard = () => {
                         {filteredUsers.map((user, index) => (
                             <li key={user.id || `user-${index}`} className="details-info">
                                 <strong>Name:</strong> {user.name} <br />
-                                <strong>Email:</strong> {user.email } <br />
+                                <strong>Email:</strong> {user.email} <br />
                                 <strong>Birthday:</strong> {user.birthday} <br />
-                                <strong>Anniversary:</strong> {user.anniversaryDate } <br />
-                                <strong>Father Name:</strong> {user.fathername || user.fatherName }
+                                <strong>Anniversary:</strong> {user.anniversaryDate} <br />
+                                <strong>Father Name:</strong> {user.fathername || user.fatherName}
                             </li>
                         ))}
                     </ul>
@@ -44,19 +58,17 @@ const Dashboard = () => {
                 )}
             </div>
 
-            {verifiedUsers.length > 0 && (
+            {getUpcomingEvents().length > 0 && (
                 <div className="upcoming-events">
                     <h2>Upcoming Events</h2>
                     <ul>
-                        {verifiedUsers.map((user, index) =>
-                            (user.birthday || user.anniversaryDate) && (
-                                <li key={user.id || `event-${index}`} className="event-info">
-                                    <strong>{user.name || "Unknown"}</strong> - 
-                                    {user.birthday && <span> Birthday on {user.birthday}</span>}
-                                    {user.anniversaryDate && <span> Anniversary on {user.anniversaryDate}</span>}
-                                </li>
-                            )
-                        )}
+                        {getUpcomingEvents().map((user, index) => (
+                            <li key={user.id || `event-${index}`} className="event-info">
+                                <strong>{user.name}</strong> - 
+                                {user.birthday && <span> Birthday on {user.birthday}</span>}
+                                {user.anniversaryDate && <span> Anniversary on {user.anniversaryDate}</span>}
+                            </li>
+                        ))}
                     </ul>
                 </div>
             )}
