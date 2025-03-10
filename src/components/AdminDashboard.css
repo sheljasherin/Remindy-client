@@ -1,0 +1,82 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 20px;
+}
+
+.p-6 {
+    padding: 1.5rem;
+}
+
+.text-2xl {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.text-lg {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    border-spacing: 30px;
+}
+
+.w-full {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+
+
+.p-2 {
+    padding: 0.5rem;
+}
+
+.bg-gray-200 {
+    background-color: #e2e8f0;
+}
+
+.hover\:bg-gray-100:hover {
+    background-color: #f1f5f9;
+}
+
+.space-x-2 {
+    display: flex;
+    gap: 8px;
+}
+
+button {
+    padding: 6px 12px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    border-radius: 4px;
+}
+
+.bg-red-500 {
+    background-color: #ef4444;
+}
+
+.bg-green-500 {
+    background-color: #10b981;
+}
+
+.bg-blue-500 {
+    background-color: #3b82f6;
+}
+
+.text-white {
+    color: #ffffff;
+}
+
+.px-3 {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+}
+
+.py-1 {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+}
+

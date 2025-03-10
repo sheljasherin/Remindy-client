@@ -75,7 +75,15 @@ body {
     list-style-type: none;
     padding-left: 0;
   }
-  
+  .search-bar {
+    width: 200px;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
   li {
     margin: 5px 0;
     font-size: 1rem;

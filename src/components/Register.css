@@ -1,0 +1,63 @@
+/* Center the register card on the page */
+.register-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f5f5f5;
+}
+
+/* Card style for the registration form */
+.register-card {
+    background: white;
+    width: 400px;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* Heading */
+.register-card h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+/* Input fields */
+.register-card input {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    background-color: #f9f9f9;
+}
+
+/* Focus effect on input fields */
+.register-card input:focus {
+    border-color: #3bb19b;
+    background-color: white;
+}
+
+/* Register button */
+.register-card button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    background-color: #3bb19b;
+    color: white;
+    border: none;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+/* Hover effect for button */
+.register-card button:hover {
+    background-color: #2e8f80;
+}

@@ -1,0 +1,30 @@
+.home-container {
+    text-align: center;
+    padding: 50px;
+    background-color: #f8f9fa;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-container h1 {
+    font-size: 2rem;
+    color: #333;
+}
+
+.home-container p {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+.home-container a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.home-container a:hover {
+    text-decoration: underline;
+}
