@@ -10,10 +10,8 @@ import Home from "./components/Home";
 const PrivateRoute = ({ children }) => {
     const token = localStorage.getItem("token");
     const adminToken = localStorage.getItem("adminToken");
-
     return token || adminToken ? children : <Navigate to="/login" />;
 };
-
 const AdminPrivateRoute = ({ children }) => {
     const adminToken = localStorage.getItem("adminToken");
     

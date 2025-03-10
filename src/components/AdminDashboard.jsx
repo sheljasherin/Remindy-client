@@ -16,7 +16,12 @@ const AdminDashboard = () => {
     const Delete = (user) => {
         setDeletedUsers([...deletedUsers, user]);
         setUsers(users.filter(u => u.id !== user.id));
+   
+        const storedUsers = JSON.parse(localStorage.getItem("verifiedUsers")) || [];
+        const updatedUsers = storedUsers.filter(u => u.id !== user.id);
+        localStorage.setItem("verifiedUsers", JSON.stringify(updatedUsers));
     };
+    
 
     const Restore = (user) => {
         setUsers([...users, user]);
